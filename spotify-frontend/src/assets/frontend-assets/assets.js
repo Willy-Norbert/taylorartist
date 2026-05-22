@@ -20,7 +20,7 @@ import queue_icon from './queue.png'
 import volume_icon from './volume.png'
 import arrow_right from './right_arrow.png'
 import arrow_left from './left_arrow.png'
-import spotify_logo from './spotify_logo.png'
+import logo from './logo.png'
 import clock_icon from './clock_icon.png'
 import mute_icon from './mute_icon.png'
 import music_gif from './music_gif.gif'
@@ -48,7 +48,7 @@ export const assets = {
     pause_icon,
     arrow_left,
     arrow_right,
-    spotify_logo,
+    logo,
     clock_icon,
     mute_icon,
     music_gif

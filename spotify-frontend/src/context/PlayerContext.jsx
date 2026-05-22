@@ -20,6 +20,21 @@ const PlayerContextProvider = (props) => {
     const [isShuffle, setIsShuffle] = useState(false);
     const [volume, setVolume] = useState(0.5);
     const [isMuted, setIsMuted] = useState(false);
+    const [showQueue, setShowQueue] = useState(false);
+    const [showLyrics, setShowLyrics] = useState(false);
+    const [isMiniPlayer, setIsMiniPlayer] = useState(false);
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const [sessionId] = useState(() => {
+        // Generate unique session ID or retrieve from storage
+        let sid = localStorage.getItem('music_session_id');
+        if (!sid) {
+            sid = 'sess_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
+            localStorage.setItem('music_session_id', sid);
+        }
+        return sid;
+    });
+    const [artistStats, setArtistStats] = useState({ monthlyListeners: 0, totalPlays: 0 });
+    const [songStats, setSongStats] = useState({});
     const [time, setTime] = useState({
         currentTime: {
             second: 0,
@@ -119,6 +134,9 @@ const PlayerContextProvider = (props) => {
         })
         await audioRef.current.play();
         setPlayStatus(true);
+        
+        // Track the play
+        trackPlay(id);
     }
 
     const previusSong = async () => {
@@ -170,6 +188,67 @@ const PlayerContextProvider = (props) => {
         getSongsData();
     }, [])
 
+    const toggleQueue = () => setShowQueue(!showQueue);
+    const toggleLyrics = () => setShowLyrics(!showLyrics);
+    const toggleMiniPlayer = () => setIsMiniPlayer(!isMiniPlayer);
+    const toggleFullscreen = () => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+            setIsFullscreen(true);
+        } else {
+            document.exitFullscreen();
+            setIsFullscreen(false);
+        }
+    };
+
+    // Track play on backend
+    const trackPlay = async (songId) => {
+        try {
+            const response = await axios.post(`${url}/api/stats/track`, {
+                songId
+            }, {
+                headers: {
+                    'x-session-id': sessionId
+                }
+            });
+            
+            if (response.data.isNewPlay) {
+                // Update song stats
+                getSongStats(songId);
+                // Update artist stats
+                getArtistStats();
+            }
+        } catch (error) {
+            console.log('Error tracking play:', error);
+        }
+    };
+
+    // Get stats for a song
+    const getSongStats = async (songId) => {
+        try {
+            const response = await axios.get(`${url}/api/stats/song/${songId}`);
+            setSongStats(prev => ({
+                ...prev,
+                [songId]: response.data
+            }));
+        } catch (error) {
+            console.log('Error getting song stats:', error);
+        }
+    };
+
+    // Get artist stats
+    const getArtistStats = async () => {
+        try {
+            const response = await axios.get(`${url}/api/stats/artist`);
+            setArtistStats({
+                monthlyListeners: response.data.uniqueMonthlyListeners,
+                totalPlays: response.data.totalPlays
+            });
+        } catch (error) {
+            console.log('Error getting artist stats:', error);
+        }
+    };
+
     const contextValue = {
         audioRef,
         seekBar,
@@ -185,7 +264,16 @@ const PlayerContextProvider = (props) => {
         isLooping, toggleLoop,
         isShuffle, toggleShuffle,
         volume, handleVolumeChange,
-        isMuted, toggleMute
+        isMuted, toggleMute,
+        showQueue, toggleQueue,
+        showLyrics, toggleLyrics,
+        isMiniPlayer, toggleMiniPlayer,
+        isFullscreen, toggleFullscreen,
+        artistStats,
+        songStats,
+        getSongStats,
+        getArtistStats,
+        trackPlay
     }
 
     return (

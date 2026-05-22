@@ -6,7 +6,7 @@ function Player() {
 
     const { track, seekBar, seekBg, play, pause, playStatus, time, nextSong, previusSong,
         seekSong, toggleLoop, isLooping, isShuffle, toggleShuffle, volume, handleVolumeChange,
-        isMuted, toggleMute } = useContext(PlayerContext)
+        isMuted, toggleMute, toggleQueue, toggleLyrics, toggleMiniPlayer, toggleFullscreen, showQueue, showLyrics } = useContext(PlayerContext)
 
     return track ? (
         <div className="h-[10%] bg-black flex justify-between items-center text-white px-4">
@@ -33,17 +33,16 @@ function Player() {
                 <div className="flex items-center gap-5">
                     <p>{time.currentTime.minute}:{time.currentTime.second}</p>
                     <div ref={seekBg} onClick={seekSong} className='w-[60vw] max-w-[500px] bg-gray-300 rounded-full cursor-pointer'>
-                        <hr ref={seekBar} className='h-1 border-none w-0 bg-green-800 rounded-full' />
+                        <hr ref={seekBar} className='h-1 border-none w-0 bg-red-600 rounded-full' />
                     </div>
                     <p>{time.totalTime.minute}:{time.totalTime.second}</p>
                 </div>
             </div>
             <div className="hidden lg:flex items-center gap-2 opacity-75">
-                <img className='w-4' src={assets.plays_icon} alt="plays_icon" />
+                <img onClick={toggleLyrics} className={showLyrics ? 'w-4 cursor-pointer text-red-500' : 'w-4 cursor-pointer'} src={assets.plays_icon} alt="lyrics" />
                 <img className='w-4' src={assets.mic_icon} alt="mic_icon" />
-                <img className='w-4' src={assets.queue_icon} alt="queue_icon" />
-                <img className='w-4' src={assets.speaker_icon} alt="speaker_icon" />
-                <img onClick={toggleMute} className='w-4 cursor-pointer' src={!isMuted && volume !== 0 ? assets.volume_icon : assets.mute_icon} alt="volume_icon" />
+                <img onClick={toggleQueue} className={showQueue ? 'w-4 cursor-pointer text-red-500' : 'w-4 cursor-pointer'} src={assets.queue_icon} alt="queue_icon" />
+                <img onClick={toggleMute} className='w-4 cursor-pointer' src={!isMuted && volume !== 0 ? assets.speaker_icon : assets.mute_icon} alt="volume_icon" />
                 <input
                     type="range"
                     min="0"
@@ -54,8 +53,8 @@ function Player() {
                     color='red'
                     className="bg-gray-300 appearance-auto h-1 w-20 opacity-70 hover:opacity-100 rounded-lg"
                 />
-                <img className='w-4' src={assets.mini_player_icon} alt="mini_player_icon" />
-                <img className='w-4' src={assets.zoom_icon} alt="zoom_icon" />
+                <img onClick={toggleMiniPlayer} className='w-4 cursor-pointer' src={assets.mini_player_icon} alt="mini_player_icon" />
+                <img onClick={toggleFullscreen} className='w-4 cursor-pointer' src={assets.zoom_icon} alt="fullscreen_icon" />
             </div>
         </div>
     ) : null

@@ -38,8 +38,7 @@ const DisplayAlbum = ({ album }) => {
                     <h4>{albumData.desc}</h4>
                     <p className='flex'>
                         <div>
-                            <img className='inline-block w-5 mr-2' src={assets.spotify_logo} alt="spotify_logo" />
-                            <b className='mr-2'>Spotify</b>
+                            <img className='inline-block w-6 mr-2' src={assets.logo} alt="Taylor" />
                         </div>
                         <div className='text-gray-300'>
                             <span>• 1,323,154 likes</span>
