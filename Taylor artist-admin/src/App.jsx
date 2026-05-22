@@ -11,7 +11,7 @@ import Login from './pages/Login';
 import Sidebar from './components/Sidebar';
 import Navbar from './components/Navbar';
 
-export const url = "http://localhost:4000";
+export const url = "https://api.irabaruta.online";
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
