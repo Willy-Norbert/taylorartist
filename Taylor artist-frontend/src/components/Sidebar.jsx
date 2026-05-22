@@ -65,7 +65,7 @@ function Sidebar() {
                                    className="w-10 h-10 bg-black border-2 border-white rounded-full flex items-center justify-center">
                                     <SiTiktok className="w-5 h-5 text-white" />
                                 </a>
-                                <a href="https://taylorartist.me" target="_blank" rel="noopener noreferrer"
+                                <a href="https://taylorartist.irabaruta.online" target="_blank" rel="noopener noreferrer"
                                    className="w-10 h-10 bg-black border border-red-600 rounded-full flex items-center justify-center">
                                     <FaGlobe className="w-5 h-5 text-red-500" />
                                 </a>
@@ -146,7 +146,7 @@ function Sidebar() {
                        className="w-9 h-9 bg-black border-2 border-white rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
                         <SiTiktok className="w-5 h-5 text-white" />
                     </a>
-                    <a href="https://taylorartist.me" target="_blank" rel="noopener noreferrer"
+                    <a href="https://taylorartist.irabaruta.online" target="_blank" rel="noopener noreferrer"
                        className="w-9 h-9 bg-black border border-red-600 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
                         <FaGlobe className="w-5 h-5 text-red-500" />
                     </a>
