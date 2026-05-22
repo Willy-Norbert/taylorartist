@@ -1,8 +1,7 @@
 import { useContext } from 'react';
 import { assets } from '../assets/frontend-assets/assets';
 import { PlayerContext } from '../context/PlayerContext';
-import DownloadButton from './DownloadButton';
-import { FaStepBackward, FaPlay, FaPause, FaStepForward, FaExpand, FaVolumeUp, FaVolumeMute, FaRandom, FaRedo } from 'react-icons/fa';
+import { FaStepBackward, FaPlay, FaPause, FaStepForward, FaExpand, FaVolumeUp, FaVolumeMute, FaRandom, FaRedo, FaCompactDisc } from 'react-icons/fa';
 
 function Player() {
 
@@ -19,9 +18,12 @@ function Player() {
                     <p className="text-sm font-medium truncate">{track.name}</p>
                     <p className="text-xs text-gray-400 truncate">{track.desc}</p>
                 </div>
-                <DownloadButton track={track} variant="mobile" />
-                <button onClick={toggleFullscreen} className="p-2 text-gray-400 hover:text-white">
-                    <FaExpand className="w-5 h-5" />
+                <button 
+                    onClick={toggleFullscreen} 
+                    className="flex items-center gap-1 px-3 py-1.5 bg-[#282828] hover:bg-[#3e3e3e] rounded-full text-xs font-medium text-white transition-colors"
+                >
+                    <FaCompactDisc className="w-4 h-4" />
+                    Preview
                 </button>
             </div>
             
@@ -32,7 +34,13 @@ function Player() {
                     <p className="font-medium text-sm truncate">{track.name}</p>
                     <p className="text-xs text-gray-400 truncate">{track.desc}</p>
                 </div>
-                <DownloadButton track={track} variant="desktop" />
+                <button 
+                    onClick={toggleFullscreen}
+                    className="flex items-center gap-2 px-4 py-2 bg-[#282828] hover:bg-[#3e3e3e] rounded-full text-sm font-medium text-white transition-colors"
+                >
+                    <FaCompactDisc className="w-4 h-4" />
+                    Preview
+                </button>
             </div>
             
             {/* Controls - Center */}
@@ -90,8 +98,12 @@ function Player() {
                     onChange={handleVolumeChange}
                     className="w-24 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:rounded-full"
                 />
-                <button onClick={toggleFullscreen} className="text-gray-400 hover:text-white ml-2">
-                    <FaExpand className="w-5 h-5" />
+                <button 
+                    onClick={toggleFullscreen}
+                    className="flex items-center gap-2 px-3 py-1.5 bg-[#282828] hover:bg-[#3e3e3e] rounded-full text-sm font-medium text-white transition-colors"
+                >
+                    <FaCompactDisc className="w-4 h-4" />
+                    Preview
                 </button>
             </div>
         </div>

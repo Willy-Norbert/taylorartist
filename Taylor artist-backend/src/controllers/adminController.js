@@ -4,20 +4,20 @@ import Admin from "../models/Admin.js";
 // Seed default admin
 export const seedAdmin = async () => {
   try {
-    const adminExists = await Admin.findOne({ email: "admin@taylorartist.me" });
+    const adminExists = await Admin.findOne({ email: "taylorartist18@gmail.com" });
     
     if (!adminExists) {
       const admin = new Admin({
-        email: "admin@taylorartist.me",
-        password: "admin123",
+        email: "taylorartist18@gmail.com",
+        password: "01402tac",
         name: "Taylor Admin",
         role: "superadmin",
       });
       
       await admin.save();
       console.log("Default admin seeded successfully");
-      console.log("Email: admin@taylorartist.me");
-      console.log("Password: admin123");
+      console.log("Email: taylorartist18@gmail.com");
+      console.log("Password: 01402tac");
     }
   } catch (error) {
     console.error("Error seeding admin:", error);
