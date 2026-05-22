@@ -20,7 +20,29 @@ seedAdmin();
 
 //middlewares
 app.use(express.json())
-app.use(cors())
+
+// CORS configuration for custom domains
+const allowedOrigins = [
+  'https://taylorartist.irabaruta.online',
+  'https://admin.irabaruta.online',
+  'http://localhost:3000',
+  'http://localhost:5173',
+  'http://localhost:5174'
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    return callback(null, true); // Allow all origins
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept']
+}))
+
+// Handle OPTIONS preflight
+app.options('*', cors())
 
 //initializing routes
 app.use("/api/song", songRouter)

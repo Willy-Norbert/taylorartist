@@ -9,7 +9,7 @@ const AdminContextProvider = (props) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const url = "http://localhost:4000/api";
+  const url = "https://api.irabaruta.online/api";
 
   // Check if admin is logged in on mount
   useEffect(() => {

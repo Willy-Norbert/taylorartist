@@ -4,7 +4,7 @@ import Navbar from "./Navbar"
 import SongsItemWithStats from "./SongsItemWithStats"
 import HeroBanner from "./HeroBanner"
 import bgBanner from "../assets/frontend-assets/bgbanner.png"
-import { PlayerContext } from './../context/PlayerContext';
+import { PlayerContext } from '../context/PlayerContext';
 
 function DisplayHome() {
     const { songsData, albumsData } = useContext(PlayerContext)

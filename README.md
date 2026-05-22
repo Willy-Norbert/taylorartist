@@ -1,7 +1,7 @@
 
-# Spotify Clone
+# Taylor artist Clone
 
-A fully functional Spotify clone built with React, Node.js, Express.js and MongoDB. This project aims to replicate the core functionalities of Spotify, allowing users to browse albums, play songs, and manage playback. 
+A fully functional Taylor artist clone built with React, Node.js, Express.js and MongoDB. This project aims to replicate the core functionalities of Taylor artist, allowing users to browse albums, play songs, and manage playback. 
 It includes functionalities for creating, browsing, and removing albums, as well as uploading, viewing, and deleting songs.
 
 ## Features
@@ -25,8 +25,8 @@ It includes functionalities for creating, browsing, and removing albums, as well
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/nuricanbrdmr/Spotify-Clone-MERN-Website.git
-    cd Spotify-Clone-MERN-Website
+    git clone https://github.com/nuricanbrdmr/Taylor artist-Clone-MERN-Website.git
+    cd Taylor artist-Clone-MERN-Website
     ```
 
 2. Set up environment variables:
@@ -40,20 +40,20 @@ It includes functionalities for creating, browsing, and removing albums, as well
 
 3. Run the backend server:
     ```bash
-    cd spotify-backend
+    cd Taylor artist-backend
     npm install
     npm start
     ```
 4. Run the backend server:
     ```bash
-    cd spotify-admin
+    cd Taylor artist-admin
     npm install
     npm run dev
     ```
 
 5. Run the frontend:
     ```bash
-    cd spotify-frontend
+    cd Taylor artist-frontend
     npm install
     npm run dev
     ```
@@ -61,7 +61,7 @@ It includes functionalities for creating, browsing, and removing albums, as well
 ## Usage
 
 1. Open your browser and navigate to `http://localhost:5173`.
-2. Create new albums and songs on the Spotify Admin page.
+2. Create new albums and songs on the Taylor artist Admin page.
 3. Browse albums and songs, create playlists, and enjoy music.
 
 ## Screenshot

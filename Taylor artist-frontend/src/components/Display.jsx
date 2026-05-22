@@ -27,7 +27,7 @@ function Display() {
     }, [isAlbum, bgColor]);
 
     return (
-        <div ref={displayRef} className="w-[100%] m-2 px-6 pt-4 rounded bg-[#121212] text-white lg:w-[75%] lg:ml-0 overflow-auto">
+        <div ref={displayRef} className="w-full lg:w-[75%] h-full px-4 lg:px-6 pt-16 lg:pt-4 pb-20 lg:pb-4 bg-[#121212] text-white overflow-auto">
             <Routes>
                 <Route path="/" element={<DisplayHome />} />
                 <Route path="/album/:id" element={<DisplayAlbum album={album} />} />
